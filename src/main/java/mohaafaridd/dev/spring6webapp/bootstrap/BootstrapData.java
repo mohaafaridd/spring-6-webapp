@@ -61,15 +61,20 @@ public class BootstrapData implements CommandLineRunner {
         Book icarusSaved = bookRepository.save(icarus);
         Publisher novelPublisherSaved = publisherRepository.save(novelPublisher);
 
+        ddd.setPublisher(codingBookPublisherSaved);
+        icarus.setPublisher(novelPublisherSaved);
         ericSaved.getBooks().add(dddSaved);
         tawfiqSaved.getBooks().add(icarusSaved);
 
+
         authorRepository.save(ericSaved);
         authorRepository.save(tawfiqSaved);
-
+        bookRepository.save(ddd);
+        bookRepository.save(icarusSaved);
+        
         System.out.println("In Bootstrap Data");
-        System.out.println("Author Count: "+authorRepository.count());
-        System.out.println("Book Count: "+bookRepository.count());
-        System.out.println("Publisher Count: "+publisherRepository.count());
+        System.out.println("Author Count: " + authorRepository.count());
+        System.out.println("Book Count: " + bookRepository.count());
+        System.out.println("Publisher Count: " + publisherRepository.count());
     }
 }
